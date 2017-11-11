@@ -10,6 +10,6 @@ nsml
 
 This is a repro of Vector Quantisation VAE from Deepmind. Authors had applied VQ-VAE for various tasks, but this repo is a slight modification of yunjey's VAE-GAN(CelebA dataset) to replace VAE with VQ-VAE.
 
-![image](https://media.oss.navercorp.com/user/6636/files/8bafa542-c6e6-11e7-9b71-e393e65b59a4)
+![image](https://user-images.githubusercontent.com/2463571/32690439-0ec64640-c73a-11e7-9e06-a0a6ea23248d.png)
 
-![image](https://media.oss.navercorp.com/user/6636/files/94604da4-c6e6-11e7-9ccd-6cadc97c630f)
+![image](https://user-images.githubusercontent.com/2463571/32690440-1738bff6-c73a-11e7-92a4-57dd8449e5a5.png)
