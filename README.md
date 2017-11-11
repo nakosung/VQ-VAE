@@ -1,5 +1,7 @@
 # VQ-VAE
 
+https://arxiv.org/abs/1711.00937
+
 ## Requirements
 nsml
 
