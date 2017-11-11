@@ -9,7 +9,7 @@ import nsml
 class Solver(object):
     
     def __init__(self, data_loader, config):
-        # Data loader
+        # Data loader새
         self.data_loader = data_loader
         
         # Model hyper-parameters
@@ -17,6 +17,7 @@ class Solver(object):
         self.z_dim = config.z_dim
         self.k_dim = config.k_dim
         self.g_conv_dim = config.g_conv_dim
+        self.code_dim = config.code_dim
         
         # Training settings
         self.total_step = config.total_step
@@ -50,7 +51,7 @@ class Solver(object):
         
     def build_model(self):
         # model and optimizer
-        self.G = Generator(self.image_size, self.z_dim, self.g_conv_dim, k_dim=self.k_dim)
+        self.G = Generator(self.image_size, self.z_dim, self.g_conv_dim, k_dim=self.k_dim, code_dim=self.code_dim)
         self.g_optimizer = torch.optim.Adam(self.G.parameters(), self.lr, [self.beta1, self.beta2])
         
         if torch.cuda.is_available():
@@ -114,7 +115,7 @@ class Solver(object):
             # Schedule learning rate
             alpha = (step - start) / (self.total_step - start)
             lr = self.lr * (1/100 ** alpha)
-            
+
             self.update_lr(lr)
             
             # Reset data_iter for each epoch
@@ -156,7 +157,7 @@ class Solver(object):
                 
             # Sample images
             if (step+1) % self.sample_step == 0:
-                reconst, _, _, _ = self.G(fixed_x)
+                reconst, _, _ = self.G(fixed_x)
 
                 def np(tensor):
                     return tensor.cpu().numpy()

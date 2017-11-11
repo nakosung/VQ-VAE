@@ -82,12 +82,13 @@ if __name__ == '__main__':
     parser.add_argument('--image_size', type=int, default=64)
     parser.add_argument('--z_dim', type=int, default=256)
     parser.add_argument('--k_dim', type=int, default=256)
+    parser.add_argument('--code_dim', type=int, default=16)
     parser.add_argument('--g_conv_dim', type=int, default=64)
     parser.add_argument('--d_conv_dim', type=int, default=64)
     
     # Training settings
     parser.add_argument('--total_step', type=int, default=200000)
-    parser.add_argument('--batch_size', type=int, default=32)
+    parser.add_argument('--batch_size', type=int, default=16)
     parser.add_argument('--num_workers', type=int, default=2)
     parser.add_argument('--lr', type=float, default=0.0002)
     parser.add_argument('--beta1', type=float, default=0.5)

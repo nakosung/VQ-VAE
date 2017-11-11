@@ -6,12 +6,12 @@ from torch.autograd import Variable
 
 class Generator(nn.Module):
     """Generator. Vector Quantised Variational Auto-Encoder."""
-    def __init__(self, image_size=64, z_dim=256, conv_dim=64, code_size=16, k_dim=256):
+    def __init__(self, image_size=64, z_dim=256, conv_dim=64, code_dim=16, k_dim=256):
         super(Generator, self).__init__()
 
         self.k_dim = k_dim
         self.z_dim = z_dim
-        self.code_size = code_size
+        self.code_dim = code_dim
         
         self.dict = nn.Embedding(k_dim, z_dim)
         
@@ -21,7 +21,7 @@ class Generator(nn.Module):
         layers.append(nn.BatchNorm2d(conv_dim))
         layers.append(nn.ReLU())
         
-        repeat_num = int(math.log2(image_size / code_size))
+        repeat_num = int(math.log2(image_size / code_dim))
         curr_dim = conv_dim
         for i in range(repeat_num):
             layers.append(nn.Conv2d(curr_dim, conv_dim * (i+2), kernel_size=4, stride=2, padding=1))
@@ -29,10 +29,10 @@ class Generator(nn.Module):
             layers.append(nn.ReLU())
             curr_dim = conv_dim * (i+2)
 
-        # Now we have (code_size,code_size,curr_dim)
+        # Now we have (code_dim,code_dim,curr_dim)
         layers.append(nn.Conv2d(curr_dim, z_dim, kernel_size=1))
 
-        # (code_size,code_size,z_dim)
+        # (code_dim,code_dim,z_dim)
         self.encoder = nn.Sequential(*layers)
         
         # Decoder (320 - 256 - 192 - 128 - 64)
