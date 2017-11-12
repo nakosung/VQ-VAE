@@ -1,4 +1,4 @@
-# VQ-VAE
+# VQ-VAE(Neural Discrete Representation Learning)
 
 https://arxiv.org/abs/1711.00937
 
