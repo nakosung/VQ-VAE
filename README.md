@@ -3,7 +3,7 @@
 https://arxiv.org/abs/1711.00937
 
 ## Requirements
-nsml
+[nsml](https://research.clova.ai/nsml-alpha)
 
 ## How to run
 `nsml run -d CelebA_128 -v -i`
